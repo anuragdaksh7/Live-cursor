@@ -73,11 +73,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
-        const randomSeed = Math.random();
+        var randomSeed = Math.random();
         var messages = document.getElementById('messages');
         var body = document.getElementById('body');
         var form = document.getElementById('form');
         var input = document.getElementById('input');
+
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -110,7 +111,7 @@
         }
 
         socket.on('mouseUpdate', function (loc) {
-            console.log(loc);
+            // console.log(loc);
             body.innerHTML = "";
             for (seed in loc){
                 var item = document.createElement('div');
@@ -119,7 +120,7 @@
                 item.style.position = 'absolute';
                 item.style.left = loc[seed][0]+'px';
                 item.style.top = loc[seed][1]+'px';
-                item.innerHTML = '<span class="material-symbols-outlined">highlight_mouse_cursor</span>'
+                item.innerHTML = '<div class="material-symbols-outlined">highlight_mouse_cursor</div><div>'+seed+'</div>'
                 body.appendChild(item);
             }
 
